@@ -9,6 +9,6 @@ terraform {
 }
 
 provider "konnect" {
-  personal_access_token = "ENTER KPAT TOKEN HERE"
+  personal_access_token = var.PLATFORM_KPAT
   server_url            = "https://us.api.konghq.com"
 }
