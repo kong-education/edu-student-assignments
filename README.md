@@ -1,14 +1,14 @@
 # Kong Developer Project
 
-We will be deploying a brand new set of applications for our organization, Kong Air
+We will be deploying a brand-new set of applications for our organization, Kong Air.
 
-All learners will be divided up into several teams each in charge of publishing their application information to a unified Dev Portal
+All learners will be divided into several teams, each responsible for publishing their application information to a unified Dev Portal.
 
-Each team will be responsible for ensuring their OAS spec is done correctly, all conversions are executed, and then Terraform files built out
+Each team will be tasked with ensuring their OAS specification is completed correctly, executing all necessary conversions, and building the required Terraform files.
 
-Once all of that is complete, each team will apply their configurations declaratively via Terraform
+Once this is complete, each team will apply their configurations declaratively using Terraform.
 
-We'll then register for our new Dev portal and create an application to see how the access process works
+Finally, we will register on the new Dev Portal and create an application to observe how the access process works.
 
 ## Instructions
 
