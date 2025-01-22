@@ -9,6 +9,7 @@ variable "portal_id" {
     default = "" # Enter Portal ID provided by the Platform team
 }
 
+# Note: the PLATFORM_SPAT value will be set via an environment variable outside of this file
 variable "PLATFORM_SPAT" {
   description = "System Access Token for Kong Konnect"
   type        = string

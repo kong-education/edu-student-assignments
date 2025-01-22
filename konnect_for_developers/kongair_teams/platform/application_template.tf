@@ -131,8 +131,8 @@ resource "konnect_gateway_plugin_cors" "cors_plugin" {
   config = {
     origins = ["*"]
     methods = ["GET", "POST", "OPTIONS"]
-    headers = ["Accept", "Accept-Version", "Content-Length", "Content-MD5", "Content-Type", "Date", "X-Auth-Token"]
-    exposed_headers = ["X-Auth-Token"]
+    headers = ["Accept", "Accept-Version", "Content-Length", "Content-MD5", "Content-Type", "Date", "X-Auth-Token", "apiKey"]
+    exposed_headers = ["X-Auth-Token", "apiKey"]
     credentials = true
     max_age = 3600
   }

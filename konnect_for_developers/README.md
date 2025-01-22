@@ -20,7 +20,7 @@ The instructor will divide the class into two or more teams.
 
 These steps can only be run from one Strigo machine. Therefore, the team must select a person to perform the following steps.
 
-1. Using the Strigo editor, navigate to the *kongair_teams* folder at:
+1. Using the Strigo editor, navigate to the *kongair_teams* folder and open the openapi.yaml specification.
 
    ```text
    /home/ubuntu/KDIL-202/assignment/kongair_teams
