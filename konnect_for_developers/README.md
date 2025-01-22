@@ -23,7 +23,7 @@ These steps can only be run from one Strigo machine. Therefore, the team must se
 1. Using the Strigo editor, navigate to the *kongair_teams* folder at:
 
    ```text
-   /home/ubuntu/KDIL-202/project/kongair_teams
+   /home/ubuntu/KDIL-202/assignment/kongair_teams
    ```
 
 2. Each folder is named after an API. Select the one your team was assigned to.
