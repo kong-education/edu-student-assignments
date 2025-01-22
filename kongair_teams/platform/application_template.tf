@@ -40,11 +40,27 @@ resource "konnect_team" "kongair_developers" {
   name        = "Kong Air Developers"
 }
 
-resource "konnect_team_role" "kongair_developer_role" {
+resource "konnect_team_role" "kongair_deployer_role" {
   entity_id        = var.control_plane_id
   entity_region    = "us"
   entity_type_name = "Control Planes"
   role_name        = "Deployer"
+  team_id          = konnect_team.kongair_developers.id
+}
+
+resource "konnect_team_role" "kongair_pubhlish_products_role" {
+  entity_id        = var.control_plane_id
+  entity_region    = "us"
+  entity_type_name = "API Products"
+  role_name        = "Admin"
+  team_id          = konnect_team.kongair_developers.id
+}
+
+resource "konnect_team_role" "kongair_pubhlish_app_reg_role" {
+  entity_id        = var.control_plane_id
+  entity_region    = "us"
+  entity_type_name = "Portals"
+  role_name        = "Admin"
   team_id          = konnect_team.kongair_developers.id
 }
 
