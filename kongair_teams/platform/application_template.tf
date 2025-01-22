@@ -48,7 +48,7 @@ resource "konnect_team_role" "kongair_deployer_role" {
   team_id          = konnect_team.kongair_developers.id
 }
 
-resource "konnect_team_role" "kongair_pubhlish_products_role" {
+resource "konnect_team_role" "kongair_products_role" {
   entity_id        = var.control_plane_id
   entity_region    = "us"
   entity_type_name = "API Products"
@@ -56,13 +56,22 @@ resource "konnect_team_role" "kongair_pubhlish_products_role" {
   team_id          = konnect_team.kongair_developers.id
 }
 
-resource "konnect_team_role" "kongair_pubhlish_app_reg_role" {
-  entity_id        = var.control_plane_id
+resource "konnect_team_role" "kongair_portal_admin_role" {
+  entity_id        = konnect_portal.kongairportal.id
   entity_region    = "us"
   entity_type_name = "Portals"
   role_name        = "Admin"
   team_id          = konnect_team.kongair_developers.id
 }
+
+# resource "konnect_team_role" "kongair_portal_maintainer_role" {
+#   entity_id        = konnect_portal.kongairportal.id
+#   entity_region    = "us"
+#   entity_type_name = "Portals"
+#   role_name        = "Maintainer"
+#   team_id          = konnect_team.kongair_developers.id
+# }
+
 
 # System Account Configuration
 locals {

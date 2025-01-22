@@ -27,3 +27,5 @@ terraform.rc
 # Ignore sensitive files
 .env
 .env.*
+
+.terraform.lock.hcl
