@@ -2,80 +2,85 @@
 
 We will be deploying a brand-new set of applications for our organization, Kong Air.
 
-All learners will be divided into several teams, each responsible for publishing their application information to a unified Dev Portal.
+All learners will be divided into several teams, each responsible for publishing their application information to a unified Developer Portal.
 
-Each team will be tasked with ensuring their OAS specification is completed correctly, executing all necessary conversions, and building the required Terraform files.
+Each team will be tasked with ensuring their OAS (OpenAPI Specification) is completed correctly, executing all necessary conversions, and building the required Terraform files.
 
 Once this is complete, each team will apply their configurations declaratively using Terraform.
 
-Finally, we will register on the new Dev Portal and create an application to observe how the access process works.
+Finally, we will register on the new Developer Portal and create an application to observe how the access process works.
 
 ## Instructions
 
-### Tean Assignments
+### Team Assignments
 
-The instructor divides the class into two or more teams.
+The instructor will divide the class into two or more teams.
 
 ### Gateway Configuration Instructions
 
-These steps can only be run from one Strigo machine. So the team must select a person to perform the following steps.
+These steps can only be run from one Strigo machine. Therefore, the team must select a person to perform the following steps.
 
-1) Using the Strigo editor, navigate to the *kongair_teams* folder at */home/ubuntu/KDIL-202/project/kongair_teams*
-2) Each folder is named after an API, select the one your team was assigned to.
-3) Set the access token. This value is defined in the *auth.tf* file, and we set it with an environment variable:
+1. Using the Strigo editor, navigate to the *kongair_teams* folder at:
 
-   ```shell
-   export TF_VAR_PLATFORM_SPAT=<value provided by instrcutor>
+   ```text
+   /home/ubuntu/KDIL-202/project/kongair_teams
    ```
 
-4) Open the *variables.tf* file. Enter the *Control Plane Id* and *Portal Id* provided by the instructor.
-5) Open the *openapi.yaml* file.
-6) Adjust the  *openapi.yaml* to route traffic
+2. Each folder is named after an API. Select the one your team was assigned to.
+3. Set the access token. This value is defined in the *auth.tf* file and is set using an environment variable:
 
-    ```yaml
-    servers:
-    - url: <Proxy URL> ## ADDRESS OF GATEWAY FROM OPS TEAM
-      description: KongAir API Server
+   ```shell
+   export TF_VAR_PLATFORM_SPAT=<value provided by instructor>
+   ```
 
-    x-kong-service-defaults:
-      host: <Strigo Lab FQDN>
-      port: <change me>
-      protocol: http
-    ```
+4. Open the *variables.tf* file and enter the *Control Plane ID* and *Portal ID* provided by the instructor.
+5. Open the *openapi.yaml* file.
+6. Adjust the *openapi.yaml* file to route traffic:
 
-    To get the FQDN, run the following command:
+   ```yaml
+   servers:
+   - url: <Proxy URL> ## ADDRESS OF GATEWAY FROM OPS TEAM
+     description: KongAir API Server
 
-    ```shell
-    echo $FQDN
-    ```
+   x-kong-service-defaults:
+     host: <Strigo Lab FQDN>
+     port: <change me>
+     protocol: http
+   ```
 
-    The port configuration is application specific, so make sure you select the correct port.
+   To get the FQDN, run the following command:
 
-    ```text
-    Experience 5050
-    Customer 5051
-    Flights 5052
-    Routes 5053
-    Bookings 5054
-    ```
+   ```shell
+   echo $FQDN
+   ```
 
-7) Lint the Open API Specification and make the necessary fixes. Here you have two options:
-   a) Lint the spec using the *inso* cli in Strigo and then make the necessary changes.
-   b) Lint using Insomnia. **Note:** As we don't have access to Insomnia via the Strigo environment, you will need to copy the spec into Insomnia locally, fix it, and then copy back into the Strigo environment.
+   The port configuration is application-specific, so ensure you select the correct port:
 
-8) Convert the OAS spec to a decK file. Example:
+   ```text
+   Experience 5050
+   Customer 5051
+   Flights 5052
+   Routes 5053
+   Bookings 5054
+   ```
 
-    ```shell
-    deck file openapi2kong --spec ./openapi.yaml --output-file ./flights_deck.yaml
-    ```
+7. Lint the OpenAPI Specification and make the necessary fixes. You have two options:
+   - Lint the spec using the *inso* CLI in Strigo, then make the necessary changes.
+   - Lint using Insomnia. **Note:** Since Insomnia is not accessible in the Strigo environment, you will need to copy the spec into Insomnia locally, fix it, and then copy it back into the Strigo environment.
 
-9) Convert the decK file to Terraform configuration. Example:
+8. Convert the OAS spec to a decK file. Example:
 
-    ```shell
-    deck file kong2tf -s ./flights_deck.yaml -o flights.tf
-    ```
+   ```shell
+   deck file openapi2kong --spec ./openapi.yaml --output-file ./flights_deck.yaml
+   ```
 
-10) Inject your product name into the application_template.tf with the following commands:
+9. Convert the decK file to Terraform configuration. Example:
+
+   ```shell
+   deck file kong2tf -s ./flights_deck.yaml -o flights.tf
+   ```
+
+10. Inject your product name into the *application_template.tf* file with the following commands:
 
     ```shell
     export PRODUCT="xyz"
@@ -87,23 +92,26 @@ These steps can only be run from one Strigo machine. So the team must select a p
     ```
 
     **Note:** It is important to set the name correctly. This value should only be one of the following depending on your team:
-    *flights, routes, customer, bookings*
+    - *flights*
+    - *routes*
+    - *customer*
+    - *bookings*
 
-11) Perform our standard terraform steps. Init -> Plan -> Apply (Strigo)
-12) Verify with platform team your API Product has been published
+11. Perform the standard Terraform steps: `Init -> Plan -> Apply` (in Strigo).
+12. Verify with the platform team that your API product has been published.
 
 ### Developer Portal Instructions
 
-Next we need to view the spec on the developer portal, register for an application and obtain a key to user the service.
+Next, we need to view the spec on the Developer Portal, register for an application, and obtain a key to use the service.
 
-1) Register for the new portal (get link from instructor)
-2) Create an application for your api. **Note:** The instructor will need to approve your request.
-3) Generate a credential
-4) Using your credential test your access and that the gateway is routing to our application properly
-5) View the Analytics for your API Product in Konnect Analytics
+1. Register on the new portal (get the link from the instructor).
+2. Create an application for your API. **Note:** The instructor will need to approve your request.
+3. Generate a credential.
+4. Using your credential, test your access and verify that the gateway is routing to your application properly.
+5. View the analytics for your API product in Konnect Analytics.
 
 ### BONUS TASK
 
-1) Make an adjustment to your OAS
-2) Run through the above process again
-3) Promote your new API Product version and deprecate the old version.
+1. Make an adjustment to your OAS.
+2. Run through the process above again.
+3. Promote your new API product version and deprecate the old version.
