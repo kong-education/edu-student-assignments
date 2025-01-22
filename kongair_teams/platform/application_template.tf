@@ -48,11 +48,19 @@ resource "konnect_team_role" "kongair_deployer_role" {
   team_id          = konnect_team.kongair_developers.id
 }
 
-resource "konnect_team_role" "kongair_products_role" {
-  entity_id        = var.control_plane_id
+resource "konnect_team_role" "kongair_products_creator_role" {
+  entity_id        = "*"
   entity_region    = "us"
   entity_type_name = "API Products"
-  role_name        = "Admin"
+  role_name        = "Creator"
+  team_id          = konnect_team.kongair_developers.id
+}
+
+resource "konnect_team_role" "kongair_products_maintainer_role" {
+  entity_id        = "*"
+  entity_region    = "us"
+  entity_type_name = "API Products"
+  role_name        = "Maintainer"
   team_id          = konnect_team.kongair_developers.id
 }
 
