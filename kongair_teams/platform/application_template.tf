@@ -64,11 +64,27 @@ resource "konnect_team_role" "kongair_products_maintainer_role" {
   team_id          = konnect_team.kongair_developers.id
 }
 
+resource "konnect_team_role" "kongair_products_publisher_role" {
+  entity_id        = "*"
+  entity_region    = "us"
+  entity_type_name = "API Products"
+  role_name        = "Publisher"
+  team_id          = konnect_team.kongair_developers.id
+}
+
 resource "konnect_team_role" "kongair_portal_admin_role" {
   entity_id        = konnect_portal.kongairportal.id
   entity_region    = "us"
   entity_type_name = "Portals"
   role_name        = "Admin"
+  team_id          = konnect_team.kongair_developers.id
+}
+
+resource "konnect_team_role" "kongair_auth_strategies_role" {
+  entity_id        = "*"
+  entity_region    = "us"
+  entity_type_name = "Application Auth Strategies"
+  role_name        = "Creator"
   team_id          = konnect_team.kongair_developers.id
 }
 
