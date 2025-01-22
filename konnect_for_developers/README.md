@@ -1,4 +1,4 @@
-# Student Assignment
+# Group Assignment
 
 We will be deploying a brand-new set of applications for our organization, Kong Air.
 
