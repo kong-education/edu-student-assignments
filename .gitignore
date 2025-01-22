@@ -24,8 +24,80 @@ terraform.rc
 # Ignore backup files created by the Terraform console
 *.backup
 
-# Ignore sensitive files
+# Ignore Terraform lock file (may contain sensitive plugin details)
+.terraform.lock.hcl
+
+# Sensitive data and secrets
+*.pem
+*.key
+*.crt
+*.cer
+secrets.json
+secrets.yaml
+secrets.yml
 .env
 .env.*
+.envrc
+.secret
 
-.terraform.lock.hcl
+# Logs and debugging files
+*.log
+debug.log
+
+# Temporary and backup files
+*~
+*.swp
+.DS_Store
+Thumbs.db
+tmp/
+temp/
+*.tmp
+*.bak
+*.old
+*.orig
+*.gz
+*.zip
+*.tar
+
+# Cloud and deployment configurations
+.aws/
+credentials
+.kube/
+kubeconfig
+docker-compose.override.yml
+
+# User-generated files
+*.out
+
+# Build and distribution files
+dist/
+build/
+
+# IDE-specific files
+.vscode/
+.idea/
+*.iml
+
+# Node.js dependencies (if applicable)
+node_modules/
+
+# Python cache and virtual environments (if applicable)
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+.eggs/
+venv/
+.env/
+
+# Java dependencies and build files (if applicable)
+target/
+*.class
+*.jar
+*.war
+*.ear
+
+# Miscellaneous system files
+*.swp
+*.swo
