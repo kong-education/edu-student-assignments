@@ -22,7 +22,12 @@ These steps can only be run from one Strigo machine. So the team must select a p
 
 1) Using the Strigo editor, navigate to the *kongair_teams* folder at */home/ubuntu/KDIL-202/project/kongair_teams*
 2) Each folder is named after an API, select the one your team was assigned to.
-3) Open the *auth.tf* file. Enter the provided PAT token where indicated and save the file.
+3) Set the access token. This value is defined in the *auth.tf* file, and we set it with an environment variable:
+
+   ```shell
+   export TF_VAR_PLATFORM_SPAT=<value provided by instrcutor>
+   ```
+
 4) Open the *variables.tf* file. Enter the *Control Plane Id* and *Portal Id* provided by the instructor.
 5) Open the *openapi.yaml* file.
 6) Adjust the  *openapi.yaml* to route traffic

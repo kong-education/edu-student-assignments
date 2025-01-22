@@ -8,3 +8,8 @@ variable "portal_id" {
     type = string
     default = "" # Enter Portal ID provided by the Platform team
 }
+
+variable "PLATFORM_SPAT" {
+  description = "System Access Token for Kong Konnect"
+  type        = string
+}
