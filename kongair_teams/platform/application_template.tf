@@ -91,10 +91,18 @@ resource "konnect_gateway_plugin_cors" "cors_plugin" {
   control_plane_id = var.control_plane_id
 }
 
+output "developer_sa_token" {
+    value = konnect_system_account_access_token.kongair_developers_platform_token.token
+}
+
+output "control_plane_id" {
+    value = var.control_plane_id
+}
+
 output "portal_id" {
     value = konnect_portal.kongairportal.id
 }
 
-output "developer_sa_token" {
-    value = konnect_system_account_access_token.kongair_developers_platform_token.token
+output "portal_url" {
+    value = konnect_portal.kongairportal.default_domain
 }

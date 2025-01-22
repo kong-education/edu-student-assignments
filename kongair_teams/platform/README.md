@@ -18,12 +18,11 @@
 11) Copy the Portal ID
 12) Copy the Porta URL
 
-Once you  have completed all of the steps, share the information with the learner:
+Once you  have completed all of the steps, the terraform file will out the following information. 
 
 ```text
-SPAT TOKEN: {Add Vaue Here}
-Control Plane ID: {Add Vaue Here}
-Proxy Address: {Add Vaue Here}
-Portal ID: {Add Vaue Here}
-Portal URL: {Add Vaue Here}
+control_plane_id = "<cp id>"
+developer_sa_token = "<token>"
+portal_id = "<portal id>"
+portal_url = "<portal url>"
 ```
