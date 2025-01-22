@@ -1,24 +1,30 @@
-# Steps for Instructors
+# Steps for Platform Setup
 
-1) Create a new Konnect Org
-2) Create a KPAT Token via the UI
-3) Export the token to an environment variable
+1. Login to Konnect.
+2. Create a Personal Access Token (KPAT).
+3. Export the token to an environment variable:
 
    ```shell
-   export TF_VAR_PLATFORM_KPAT=<inert KPAT token here>
+   export TF_VAR_PLATFORM_KPAT=<insert KPAT token here>
    ```
 
-4) Navigate to Gateway Manager and select serverless-default (you may have to click through a tutorial once here)
-5) Copy the Control Plane ID
-6) Copy the Gateway Address
-7) Navigate to the Platform folder in the Project folders
-8) Update your auth.tf with the KPAT token you generated
-9) Terraform init the folder
-10) Terraform apply
-11) Copy the Portal ID
-12) Copy the Porta URL
+4. Navigate to Gateway Manager and select `serverless-default`.
+5. Copy the *control plane id*.
+6. Copy the gateway address.
+7. Navigate to the Platform folder in the Project folders.
+8. Set the control plane id:
 
-Once you  have completed all of the steps, the terraform file will out the following information. 
+   ```tf
+   variable "control_plane_id" {
+   type = string
+   default = "<serverless-cp-id>"
+   }
+   ```
+
+9. Run `terraform init` in the folder.
+10. Run `terraform apply`.
+
+Once you have completed all of the steps, Terraform will output the following information, which must be shared with the API teams:
 
 ```text
 control_plane_id = "<cp id>"
