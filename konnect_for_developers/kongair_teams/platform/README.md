@@ -11,8 +11,8 @@
 4. Navigate to Gateway Manager and select `serverless-default`.
 5. Copy the *control plane id*.
 6. Copy the gateway address.
-7. Navigate to the Platform folder in the Project folders.
-8. Set the control plane id:
+7. Navigate to the platform folder.
+8. In the variables.tf file, set the control plane id:
 
    ```tf
    variable "control_plane_id" {
