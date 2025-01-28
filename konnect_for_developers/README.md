@@ -54,25 +54,18 @@ These steps can only be run from one Strigo machine. Therefore, the team must se
      description: KongAir API Server
 
    x-kong-service-defaults:
-     host: <Strigo Lab FQDN>
+     host: <Strigo Lab FQDN> #FQDN FROM OPS TEAM
      port: <change me>
      protocol: http
    ```
 
-   To get the FQDN, run the following command:
-
-   ```shell
-   echo $FQDN
-   ```
-
-   The port configuration is application-specific, so ensure you select the correct port:
+   **Note:** The port configuration is application-specific, so ensure you use the correct port:
 
    ```text
-   Experience 5050
-   Customer 5051
-   Flights 5052
-   Routes 5053
-   Bookings 5054
+   customer 5051
+   flights 5052
+   routes 5053
+   bookings 5054
    ```
 
 7. Lint the OpenAPI Specification and make the necessary fixes. You have two options:
@@ -82,11 +75,15 @@ These steps can only be run from one Strigo machine. Therefore, the team must se
    ```shell
    deck file openapi2kong --spec ./openapi.yaml --output-file ./flights_deck.yaml
    ```
+   **Note:** Make sure you name the deck file correctly according to your team, i.e. customer,flights,routes,booking
+   
 9. Convert the decK file to Terraform configuration. Example:
    ```shell
    deck file kong2tf -s ./flights_deck.yaml -o flights.tf
    ```
-10. Inject your product name into the *application_template.tf* file with the following commands. 
+   **Note:** Make sure you name the Terraform file correctly according to your team, i.e. customer,flights,routes,booking
+
+10. Inject your product name into the *application_template.tf* file with the following commands:
 
     **Note:** It is important to set the name correctly. This value should only be one of the following depending on your team:
     - *flights*
@@ -115,9 +112,3 @@ Next, we need to view the spec on the Developer Portal, register for an applicat
 3. Generate a credential.
 4. Using your credential, test your access and verify that the gateway is routing to your application properly.
 5. View the analytics for your API product in Konnect Analytics.
-
-### BONUS TASK
-
-1. Make an adjustment to your OAS.
-2. Run through the process above again.
-3. Promote your new API product version and deprecate the old version.
