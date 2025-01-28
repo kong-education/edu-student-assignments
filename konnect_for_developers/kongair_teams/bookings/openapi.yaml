@@ -86,6 +86,29 @@ paths:
                    "flight_number": "KA924",
                    "seat": "32A"
                  }
+    options:
+      summary: Preflight request for CORS
+      description: |
+        Handles the CORS preflight request for the /bookings endpoint.
+      tags:
+      - sales
+      operationId: options-bookings
+      responses:
+        '204':
+          description: No Content - CORS preflight successful
+          headers:
+            Access-Control-Allow-Origin:
+              description: Allowed origins for the endpoint.
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              description: Allowed methods for the endpoint.
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              description: Allowed headers for the endpoint.
+              schema:
+                type: string
 
 components:
   schemas:
