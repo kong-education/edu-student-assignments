@@ -26,6 +26,14 @@ paths:
       - sales
       - customer
       operationId: get-cust-info
+      parameters:
+        - name: x-consumer-username
+          in: header
+          description: Username of the consumer making the request
+          required: true
+          example: jsmith
+          schema:
+            type: string
       responses:
         '200':
           $ref: '#/components/responses/CustomerSingle'
@@ -39,6 +47,14 @@ paths:
       - sales
       - customer
       operationId: options-customer
+      parameters:
+        - name: x-consumer-username
+          in: header
+          description: Username of the consumer making the request
+          required: true
+          example: jsmith
+          schema:
+            type: string
       responses:
         '204':
           description: No Content - CORS preflight successful
