@@ -21,6 +21,14 @@ paths:
       - sales
       summary: Get a customers current bookings
       operationId: get-bookings
+      parameters:
+        - name: x-consumer-username
+          in: header
+          description: Username of the consumer making the request
+          required: true
+          example: jsmith
+          schema:
+            type: string
       responses:
         '200':
           description: Successful Response
@@ -50,6 +58,14 @@ paths:
         - sales
       summary: Create a new customer booking
       operationId: post-booking
+      parameters:
+        - name: x-consumer-username
+          in: header
+          description: Username of the consumer making the request
+          required: true
+          example: jsmith
+          schema:
+            type: string
       responses:
         '201':
           description: Booking Created Successfully
@@ -91,6 +107,14 @@ paths:
       tags:
       - sales
       operationId: options-bookings
+      parameters:
+        - name: x-consumer-username
+          in: header
+          description: Username of the consumer making the request
+          required: true
+          example: jsmith
+          schema:
+            type: string
       responses:
         '204':
           description: No Content - CORS preflight successful
