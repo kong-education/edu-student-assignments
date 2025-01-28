@@ -1,5 +1,3 @@
----
-# OpenAPI Spec for the KongAir Flights service
 openapi: 3.1.0
 
 info:
@@ -12,7 +10,7 @@ servers:
   description: Kong Proxy
 
 x-kong-service-defaults:
-  host: <Strigo Lab FQDN> ## ADDRESS OF GATEWAY FROM OPS TEAM
+  host: <Strigo Lab FQDN> ## FQDN FROM OPS TEAM
   port: <change me>
   protocol: http
 
@@ -36,7 +34,7 @@ paths:
             format: date
       responses:
         '200':
-          description: Successful respone with scheduled flights
+          description: Successful response with scheduled flights
           headers:
            hostname:
              description: "The hostname of the machine fulfilling the request."
@@ -65,6 +63,28 @@ paths:
                         "scheduled_arrival": "2024-03-21T19:12:28Z"
                       }
                    ]
+    options:
+      summary: Preflight request for CORS
+      description: Handles the CORS preflight request for the /flights endpoint.
+      tags:
+      - flight-data
+      operationId: options-flights
+      responses:
+        '204':
+          description: No Content - CORS preflight successful
+          headers:
+            Access-Control-Allow-Origin:
+              description: Allowed origins for the endpoint.
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              description: Allowed methods for the endpoint.
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              description: Allowed headers for the endpoint.
+              schema:
+                type: string
 
   "/flights/{flightNumber}":
     get:
@@ -112,6 +132,28 @@ paths:
                 properties:
                   message:
                     type: string
+    options:
+      summary: Preflight request for CORS
+      description: Handles the CORS preflight request for the /flights/{flightNumber} endpoint.
+      tags:
+      - flight-data
+      operationId: options-flight-by-number
+      responses:
+        '204':
+          description: No Content - CORS preflight successful
+          headers:
+            Access-Control-Allow-Origin:
+              description: Allowed origins for the endpoint.
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              description: Allowed methods for the endpoint.
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              description: Allowed headers for the endpoint.
+              schema:
+                type: string
 
   "/flights/{flightNumber}/details":
     get:
@@ -149,6 +191,28 @@ paths:
                 properties:
                   message:
                     type: string
+    options:
+      summary: Preflight request for CORS
+      description: Handles the CORS preflight request for the /flights/{flightNumber}/details endpoint.
+      tags:
+      - flight-data
+      operationId: options-flight-details
+      responses:
+        '204':
+          description: No Content - CORS preflight successful
+          headers:
+            Access-Control-Allow-Origin:
+              description: Allowed origins for the endpoint.
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              description: Allowed methods for the endpoint.
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              description: Allowed headers for the endpoint.
+              schema:
+                type: string
 
 components:
   schemas:
@@ -197,4 +261,3 @@ components:
 
 security:
   - ApiKeyAuth: []
-
