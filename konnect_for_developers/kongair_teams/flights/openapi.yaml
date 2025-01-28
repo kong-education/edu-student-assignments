@@ -132,6 +132,36 @@ paths:
                 properties:
                   message:
                     type: string
+    options:
+      summary: Preflight request for CORS
+      description: Handles the CORS preflight request for the /flights/{flightNumber} endpoint.
+      tags:
+      - flight-data
+      operationId: options-flight-by-number
+      parameters:
+        - name: flightNumber
+          in: path
+          description: The flight number
+          required: true
+          style: simple
+          schema:
+            type: string
+      responses:
+        '204':
+          description: No Content - CORS preflight successful
+          headers:
+            Access-Control-Allow-Origin:
+              description: Allowed origins for the endpoint.
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              description: Allowed methods for the endpoint.
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              description: Allowed headers for the endpoint.
+              schema:
+                type: string
 
   "/flights/{flightNumber}/details":
     get:
@@ -169,6 +199,36 @@ paths:
                 properties:
                   message:
                     type: string
+    options:
+      summary: Preflight request for CORS
+      description: Handles the CORS preflight request for the /flights/{flightNumber}/details endpoint.
+      tags:
+      - flight-data
+      operationId: options-flight-details
+      parameters:
+        - name: flightNumber
+          in: path
+          description: The flight number
+          required: true
+          style: simple
+          schema:
+            type: string
+      responses:
+        '204':
+          description: No Content - CORS preflight successful
+          headers:
+            Access-Control-Allow-Origin:
+              description: Allowed origins for the endpoint.
+              schema:
+                type: string
+            Access-Control-Allow-Methods:
+              description: Allowed methods for the endpoint.
+              schema:
+                type: string
+            Access-Control-Allow-Headers:
+              description: Allowed headers for the endpoint.
+              schema:
+                type: string
 
 components:
   schemas:
