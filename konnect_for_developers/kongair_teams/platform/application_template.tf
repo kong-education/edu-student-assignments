@@ -48,6 +48,37 @@ resource "konnect_team_role" "kongair_deployer_role" {
   team_id          = konnect_team.kongair_developers.id
 }
 
+resource "konnect_team_role" "kongair_service_admin_role" {
+  entity_id        = "*"
+  entity_region    = "us"
+  entity_type_name = "Control Planes"
+  role_name        = "Gateway Service Admin"
+  team_id          = konnect_team.kongair_developers.id
+}
+
+resource "konnect_team_role" "kongair_plugins_admin_role" {
+  entity_id        = "*"
+  entity_region    = "us"
+  entity_type_name = "Control Planes"
+  role_name        = "Plugin Admin"
+  team_id          = konnect_team.kongair_developers.id
+}
+
+resource "konnect_team_role" "kongair_route_admin_role" {
+  entity_id        = "*"
+  entity_region    = "us"
+  entity_type_name = "Control Planes"
+  role_name        = "Route Admin"
+  team_id          = konnect_team.kongair_developers.id
+}
+resource "konnect_team_role" "kongair_upstream_admin_role" {
+  entity_id        = "*"
+  entity_region    = "us"
+  entity_type_name = "Control Planes"
+  role_name        = "Upstream Admin"
+  team_id          = konnect_team.kongair_developers.id
+}
+
 resource "konnect_team_role" "kongair_products_creator_role" {
   entity_id        = "*"
   entity_region    = "us"
@@ -130,8 +161,8 @@ resource "konnect_gateway_plugin_cors" "cors_plugin" {
 
   config = {
     origins = ["*"]
-    methods = ["GET", "POST", "OPTIONS"]
-    headers = ["Accept", "Accept-Version", "Content-Length", "Content-MD5", "Content-Type", "Date", "X-Auth-Token", "apiKey"]
+    methods = ["GET", "POST","PUT", "PATCH", "DELETE", "OPTIONS"]
+    headers = ["Accept", "Accept-Version", "Content-Length", "Content-MD5", "Content-Type", "Date", "X-Auth-Token", "apiKey", "apikey"]
     exposed_headers = ["X-Auth-Token", "apiKey"]
     credentials = true
     max_age = 3600

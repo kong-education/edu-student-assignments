@@ -1,4 +1,4 @@
-# Group Assignment
+# Group Project
 
 We will be deploying a brand-new set of applications for our organization, Kong Air.
 
@@ -12,6 +12,12 @@ Finally, we will register on the new Developer Portal and create an application 
 
 ## Instructions
 
+### Lab Setup: Developer Portal Operations
+
+```shell
+setup
+```
+
 ### Team Assignments
 
 The instructor will divide the class into two or more teams.
@@ -20,20 +26,25 @@ The instructor will divide the class into two or more teams.
 
 These steps can only be run from one Strigo machine. Therefore, the team must select a person to perform the following steps.
 
-1. Using the Strigo editor, navigate to the *kongair_teams* folder and open the openapi.yaml specification.
+1. View the project files
 
-   ```text
-   /home/ubuntu/KDIL-202/assignment/kongair_teams
+   ```shell
+   tree /home/ubuntu/KDIL-202/project/kongair_teams
    ```
 
-2. Each folder is named after an API. Select the one your team was assigned to.
-3. Set the access token. This value is defined in the *auth.tf* file and is set using an environment variable:
+2. Inspect the Terraform auth configuration. (You will see that the Konnect access token is set via an environment variable).
+
+   ```shell
+   kat /home/ubuntu/KDIL-202/project/kongair_teams/flights/auth.tf
+   ```
+
+3. In order to apply our config we need to set the access token first. We can do so as follows:
 
    ```shell
    export TF_VAR_PLATFORM_SPAT=<value provided by instructor>
    ```
 
-4. Open the *variables.tf* file and enter the *Control Plane ID* and *Portal ID* provided by the instructor.
+4. Open the *variables.tf* file and enter the *Control Plane ID* and *Portal ID* provided by the platform team.
 5. Open the *openapi.yaml* file.
 6. Adjust the *openapi.yaml* file to route traffic:
 
@@ -67,29 +78,15 @@ These steps can only be run from one Strigo machine. Therefore, the team must se
 7. Lint the OpenAPI Specification and make the necessary fixes. You have two options:
    - Lint the spec using the *inso* CLI in Strigo, then make the necessary changes.
    - Lint using Insomnia. **Note:** Since Insomnia is not accessible in the Strigo environment, you will need to copy the spec into Insomnia locally, fix it, and then copy it back into the Strigo environment.
-
 8. Convert the OAS spec to a decK file. Example:
-
    ```shell
    deck file openapi2kong --spec ./openapi.yaml --output-file ./flights_deck.yaml
    ```
-
 9. Convert the decK file to Terraform configuration. Example:
-
    ```shell
    deck file kong2tf -s ./flights_deck.yaml -o flights.tf
    ```
-
-10. Inject your product name into the *application_template.tf* file with the following commands:
-
-    ```shell
-    export PRODUCT="xyz"
-    ```
-
-    ```shell
-    envsubst < application_template.tf > application_template.tmp && \
-    mv application_template.tmp application_template.tf
-    ```
+10. Inject your product name into the *application_template.tf* file with the following commands. 
 
     **Note:** It is important to set the name correctly. This value should only be one of the following depending on your team:
     - *flights*
@@ -97,7 +94,16 @@ These steps can only be run from one Strigo machine. Therefore, the team must se
     - *customer*
     - *bookings*
 
-11. Perform the standard Terraform steps: `Init -> Plan -> Apply` (in Strigo).
+    ```shell
+    export PRODUCT="<team name>"
+    ```
+
+    ```shell
+    envsubst < application_template.tf > application_template.tmp && \
+    mv application_template.tmp application_template.tf
+    ```
+
+11. Perform the standard Terraform steps: `Init -> Plan -> Apply`.
 12. Verify with the platform team that your API product has been published.
 
 ### Developer Portal Instructions
