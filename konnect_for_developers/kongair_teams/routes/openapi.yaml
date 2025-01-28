@@ -45,6 +45,13 @@ paths:
       tags:
       - flight-data
       operationId: options-route-by-id
+      parameters:
+        - name: id
+          in: path
+          description: String route ID
+          required: true
+          schema:
+            type: string
       responses:
         '204':
           description: No Content - CORS preflight successful
