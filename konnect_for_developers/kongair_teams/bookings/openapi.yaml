@@ -174,5 +174,11 @@ components:
       required:
         - ticket_number
 
-  security:
-    - ApiKeyAuth: []
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: apiKey
+
+security:
+  - ApiKeyAuth: []
