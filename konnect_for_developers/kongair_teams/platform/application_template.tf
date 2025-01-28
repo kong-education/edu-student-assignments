@@ -129,10 +129,6 @@ resource "konnect_team_role" "kongair_auth_strategies_role" {
 
 
 # System Account Configuration
-locals {
-  duration   = 24 // hours
-  expiration_date = timeadd(formatdate("YYYY-MM-DD'T'HH:mm:ssZ", timestamp()), "${local.duration}h")
-}
 
 resource "konnect_system_account" "kongair_developer_sa" {
   name            = "kongair_developer_sa"
@@ -149,7 +145,7 @@ resource "konnect_system_account_team" "kongair_developers" {
 resource "konnect_system_account_access_token" "kongair_developers_platform_token" {
 
   name       = "kongair_developers_platform_token"
-  expires_at = local.expiration_date
+  expires_at = var.token_expiration_date
   account_id = konnect_system_account.kongair_developer_sa.id
 
 }

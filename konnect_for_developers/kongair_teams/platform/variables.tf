@@ -8,3 +8,8 @@ variable "PLATFORM_KPAT" {
   description = "Personal Access Token for Kong Konnect"
   type        = string
 }
+
+variable "token_expiration_date" {
+  type    = string
+  default = "2025-01-29T17:00:00Z" # Placeholder, updated via token_data.tfvars
+}
