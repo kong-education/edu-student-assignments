@@ -10,11 +10,11 @@ info:
   title: Customer Information Service
 
 servers:
-- url: https://api.kong-air.com ## ADDRESS OF GATEWAY FROM OPS TEAM
-  description: KongAir API Server
+- url: <KONG PROXY URL> ## ADDRESS OF GATEWAY FROM OPS TEAM
+  description: Kong Proxy
 
 x-kong-service-defaults:
-  host: <Strigo Lab FQDN>
+  host: <Strigo Lab FQDN> ## FQDN FROM OPS TEAM
   port: <change me>
   protocol: http
 
