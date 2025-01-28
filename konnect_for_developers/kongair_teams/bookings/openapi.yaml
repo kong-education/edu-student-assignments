@@ -173,3 +173,6 @@ components:
           type: string
       required:
         - ticket_number
+
+security:
+  - ApiKeyAuth: []
