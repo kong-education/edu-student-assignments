@@ -1,7 +1,7 @@
 #Variables
 variable "control_plane_id" {
   type = string
-  default = "d5d19f00-21b6-4b39-bb26-61d5038514d6" 
+  default = "ab41f304-baab-41c6-b0cf-dbaf59add525" 
 }
 
 variable "PLATFORM_KPAT" {
@@ -11,5 +11,5 @@ variable "PLATFORM_KPAT" {
 
 variable "token_expiration_date" {
   type    = string
-  default = "2025-01-29T17:00:00Z" # Placeholder, updated via token_data.tfvars
+  default = "2025-05-30T17:00:00Z" # Placeholder, updated via token_data.tfvars
 }
