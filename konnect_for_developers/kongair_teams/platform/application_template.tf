@@ -168,7 +168,3 @@ output "portal_id" {
 output "portal_url" {
     value = konnect_portal.kongairportal.default_domain
 }
-
-output "proxy_endpoint" {
-  value = konnect_serverless_cloud_gateway.my_scgw.gateway_endpoint
-}
