@@ -12,12 +12,6 @@ Finally, we will register on the new Developer Portal and create an application 
 
 ## Instructions
 
-### Lab Setup: Developer Portal Operations
-
-```shell
-setup
-```
-
 ### Team Assignments
 
 The instructor will divide the class into two or more teams.
@@ -35,7 +29,7 @@ These steps can only be run from one Strigo machine. Therefore, the team must se
 2. Inspect the Terraform auth configuration. (You will see that the Konnect access token is set via an environment variable).
 
    ```shell
-   kat /home/ubuntu/KDIL-202/project/kongair_teams/flights/auth.tf
+   cat /home/ubuntu/KDIL-202/project/kongair_teams/flights/auth.tf
    ```
 
 3. In order to apply our config we need to set the access token first. We can do so as follows:

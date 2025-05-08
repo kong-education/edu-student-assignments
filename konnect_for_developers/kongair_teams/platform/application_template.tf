@@ -17,16 +17,11 @@
 #   ]
 # }
 
-# # Control Plane Output (Please provide to application teams)
-# output "control_plane_id" {
-#   value = konnect_gateway_control_plane.kongair.id
-# }
-
 
 # Portal Configuration
 resource "konnect_portal" "kongairportal" {
   name                      = "Kong Air Portal"
-  auto_approve_applications = false
+  auto_approve_applications = filebase64sha512()
   auto_approve_developers   = true
   is_public                 = false
   rbac_enabled              = false
@@ -119,15 +114,6 @@ resource "konnect_team_role" "kongair_auth_strategies_role" {
   team_id          = konnect_team.kongair_developers.id
 }
 
-# resource "konnect_team_role" "kongair_portal_maintainer_role" {
-#   entity_id        = konnect_portal.kongairportal.id
-#   entity_region    = "us"
-#   entity_type_name = "Portals"
-#   role_name        = "Maintainer"
-#   team_id          = konnect_team.kongair_developers.id
-# }
-
-
 # System Account Configuration
 
 resource "konnect_system_account" "kongair_developer_sa" {
@@ -181,4 +167,8 @@ output "portal_id" {
 
 output "portal_url" {
     value = konnect_portal.kongairportal.default_domain
+}
+
+output "proxy_endpoint" {
+  value = konnect_serverless_cloud_gateway.my_scgw.gateway_endpoint
 }
