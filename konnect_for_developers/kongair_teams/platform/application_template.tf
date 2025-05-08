@@ -21,7 +21,7 @@
 # Portal Configuration
 resource "konnect_portal" "kongairportal" {
   name                      = "Kong Air Portal"
-  auto_approve_applications = filebase64sha512()
+  auto_approve_applications = false
   auto_approve_developers   = true
   is_public                 = false
   rbac_enabled              = false
